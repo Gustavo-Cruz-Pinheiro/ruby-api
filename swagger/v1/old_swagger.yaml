@@ -1,0 +1,40 @@
+openai: 3.0.0
+info: 
+  tittle: Product API
+  description: Serviço para exibição de dados de produtos aleatórios.
+  version: 1.0.0
+servers:
+  - url: https://api.products.com/v1
+    description: Servidor de produção
+  - url: https://staging_api.products.com/v1 
+    description: Servidor de Staging / Teste
+  - url: https://localhost:3000/ 
+    description: Servidor de Desenvolvimento
+paths:
+ /products:
+   get:
+    summary: Retorna uma lista de produtos
+     description: Retorna uma lista de todos os produtos disponíveis no sistema.
+      resonses:
+       '200':
+        description: OK
+         content:
+          application/json:
+           schema:
+            type: array
+             items:
+              $ref: '#/components/schemas/Product'
+components:
+ schema:
+  Product: 
+   type: object
+   propreties:
+    id:
+     type: integer
+     example: 1
+     description: Identificação do produto
+    description:
+      type: string
+      example: Aerodynamic Plastic Knife
+      description: Nome do Produto
+  
